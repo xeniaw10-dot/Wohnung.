@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0A">
+<title>Exklusive Altbauwohnung — Altstadt Palma de Mallorca</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #0A0A0A;
+  --white: #FFFFFF;
+  --gray: #6B6B6B;
+  --light: #F5F5F3;
+  --gold: #B8975A;
+  --border: #E8E8E4;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+img { display: block; width: 100%; height: auto; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0.9rem 1.25rem;
+  padding-top: calc(0.9rem + env(safe-area-inset-top, 0px));
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,10,10,0.5);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem; color: var(--white); letter-spacing: 0.04em;
+}
+.lang-switch { display: flex; gap: 0; }
+.lang-btn {
+  background: none; border: none;
+  font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  /* Minimum 44px touch target */
+  min-width: 44px; min-height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: color 0.2s; -webkit-tap-highlight-color: transparent;
+}
+.lang-btn.active { color: var(--white); }
+
+/* ── HERO ── */
+.hero {
+  height: 100svh; min-height: 500px;
+  position: relative; overflow: hidden; background: var(--black);
+}
+.hero-img {
+  position: absolute; inset: 0;
+  background: url('01-wohnzimmer-sofa.jpeg') center/cover no-repeat;
+  opacity: 0.58; transform: scale(1.04);
+  animation: zh 14s ease forwards;
+  will-change: transform;
+}
+@keyframes zh { to { transform: scale(1); } }
+.hero-content {
+  position: relative; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 2rem 1.25rem;
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+}
+.hero-eyebrow {
+  font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.85rem;
+  display: flex; align-items: center; gap: 0.7rem;
+  opacity: 0; animation: fu 0.8s 0.3s forwards;
+}
+.hero-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--gold); flex-shrink: 0; }
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 11vw, 5rem);
+  font-weight: 400; color: var(--white); line-height: 1.05;
+  margin-bottom: 2rem;
+  opacity: 0; animation: fu 0.8s 0.5s forwards;
+}
+.hero-title em { font-style: italic; color: rgba(255,255,255,0.55); }
+.hero-bottom {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 1rem;
+  opacity: 0; animation: fu 0.8s 0.7s forwards;
+}
+.hero-price-wrap .label {
+  font-size: 0.55rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 0.25rem;
+}
+.hero-price {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 400; color: var(--white); white-space: nowrap;
+}
+.no-fee {
+  font-size: 0.58rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(184,151,90,0.35);
+  padding: 0.5rem 0.8rem; white-space: nowrap; flex-shrink: 0;
+}
+@keyframes fu {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--black);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.stat {
+  padding: 1.1rem 0.5rem; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.stat:last-child { border-right: none; }
+.stat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  color: var(--white); line-height: 1; margin-bottom: 0.25rem;
+}
+.stat-lbl {
+  font-size: 0.5rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #555;
+}
+
+/* ── GALLERY ── */
+.gallery { background: var(--light); padding: 2.5rem 1.25rem; }
+.gallery-stag {
+  font-size: 0.56rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.25rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.gallery-stag::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.gallery-main {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover;
+  margin-bottom: 3px;
+}
+.gallery-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
+}
+.gallery-grid img { aspect-ratio: 4/3; object-fit: cover; }
+.gallery-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; margin-top: 3px;
+}
+.gallery-strip img {
+  aspect-ratio: 1/1; object-fit: cover;
+  opacity: 0.8; transition: opacity 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.gallery-strip img:active { opacity: 1; }
+
+/* ── SECTIONS ── */
+section { padding: 2.75rem 1.25rem; }
+.stag {
+  font-size: 0.56rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.9rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.stag::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.stitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  font-weight: 400; line-height: 1.15; color: var(--black); margin-bottom: 1.25rem;
+}
+.stitle em { font-style: italic; color: var(--gray); }
+.dtxt {
+  font-size: 0.88rem; font-weight: 300; line-height: 1.8; color: #444; margin-bottom: 0.9rem;
+}
+
+/* ── FEATURES GRID ── */
+.features-section { background: var(--light); padding: 2.75rem 1.25rem; }
+.features-section .stag::after { background: #ddd; }
+.feat-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); margin-top: 1.5rem;
+}
+.feat { background: var(--white); padding: 1.2rem 1rem; }
+.feat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+  color: var(--black); margin-bottom: 0.2rem;
+}
+.feat-key {
+  font-size: 0.56rem; font-weight: 500;
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--gray);
+}
+
+/* ── LOCATION ── */
+.loc-list { margin-top: 1.25rem; }
+.loc-row {
+  display: flex; align-items: flex-start; gap: 0.9rem;
+  padding: 1rem 0; border-bottom: 1px solid var(--border);
+}
+.loc-row:first-child { border-top: 1px solid var(--border); }
+.loc-ico {
+  width: 32px; height: 32px; min-width: 32px;
+  background: var(--light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+}
+.loc-h { font-size: 0.82rem; font-weight: 500; color: var(--black); margin-bottom: 0.2rem; }
+.loc-p { font-size: 0.76rem; font-weight: 300; color: var(--gray); line-height: 1.55; }
+
+/* ── CONTACT ── */
+.contact-section { background: var(--black); padding: 2.75rem 1.25rem; }
+.contact-section .stag { color: var(--gold); }
+.contact-section .stag::after { background: rgba(255,255,255,0.08); }
+.contact-section .stitle { color: var(--white); }
+.cnote {
+  font-size: 0.78rem; font-weight: 300;
+  color: rgba(255,255,255,0.35); line-height: 1.7; margin-bottom: 1.75rem;
+}
+.frow { margin-bottom: 0.85rem; }
+.flbl {
+  display: block; font-size: 0.56rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-bottom: 0.45rem;
+}
+.finput, .ftarea {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  color: var(--white);
+  font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 300;
+  /* min 44px height for touch */
+  padding: 0.75rem 0.9rem;
+  min-height: 44px;
+  outline: none; transition: border-color 0.2s;
+  -webkit-appearance: none; border-radius: 0;
+  /* prevent iOS zoom on focus (font-size >= 16px) */
+}
+.finput:focus, .ftarea:focus { border-color: var(--gold); }
+.finput::placeholder, .ftarea::placeholder { color: rgba(255,255,255,0.2); }
+.ftarea { height: 96px; resize: none; }
+.sbtn {
+  width: 100%; margin-top: 0.5rem;
+  background: var(--gold); border: none;
+  color: var(--black);
+  font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 1rem; min-height: 52px;
+  cursor: pointer; transition: opacity 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 0;
+}
+.sbtn:active { opacity: 0.8; }
+.dcontact {
+  margin-top: 1.75rem; padding-top: 1.75rem;
+  border-top: 1px solid rgba(255,255,255,0.07); text-align: center;
+}
+.dcontact .dlbl {
+  font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.22); margin-bottom: 0.5rem;
+}
+.dcontact a {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; color: var(--white); text-decoration: none;
+  display: inline-block; padding: 0.5rem 0; /* bigger tap target */
+}
+.smsg { display: none; text-align: center; padding: 3rem 1rem; }
+.smsg h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; color: var(--white); margin-bottom: 0.5rem;
+}
+.smsg p { font-size: 0.78rem; color: rgba(255,255,255,0.3); line-height: 1.6; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 1.25rem;
+  padding-bottom: calc(1.25rem + var(--safe-bottom));
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  justify-content: space-between; align-items: center;
+  background: #050505; border-top: 1px solid rgba(255,255,255,0.04);
+}
+footer span { font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.18); }
+
+/* ── LANG TOGGLE ── */
+.lc { display: none; }
+.lc.on { display: block; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Altstadt Palma</div>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('de')">DE</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+  </div>
+</nav>
+
+<!-- HERO — Hintergrundbild: images/01-wohnzimmer-hauptansicht.jpeg -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="lc on" data-l="de">Palma de Mallorca · Zum Verkauf</span>
+      <span class="lc" data-l="en">Palma de Mallorca · For Sale</span>
+      <span class="lc" data-l="es">Palma de Mallorca · En Venta</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="lc on" data-l="de">Exklusive<br><em>Altbauwohnung</em></span>
+      <span class="lc" data-l="en">Exclusive<br><em>Historic Apartment</em></span>
+      <span class="lc" data-l="es">Apartamento<br><em>Histórico Exclusivo</em></span>
+    </h1>
+    <div class="hero-bottom">
+      <div class="hero-price-wrap">
+        <div class="label">
+          <span class="lc on" data-l="de">Kaufpreis</span>
+          <span class="lc" data-l="en">Purchase Price</span>
+          <span class="lc" data-l="es">Precio de Venta</span>
+        </div>
+        <div class="hero-price">2.000.000 €</div>
+      </div>
+      <div class="no-fee">
+        <span class="lc on" data-l="de">Ohne Makler</span>
+        <span class="lc" data-l="en">No Agent Fees</span>
+        <span class="lc" data-l="es">Sin Comisión</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-val">202</div>
+    <div class="stat-lbl">m²</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">4</div>
+    <div class="stat-lbl">
+      <span class="lc on" data-l="de">Zimmer</span>
+      <span class="lc" data-l="en">Beds</span>
+      <span class="lc" data-l="es">Hab.</span>
+    </div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">4</div>
+    <div class="stat-lbl">
+      <span class="lc on" data-l="de">Bäder</span>
+      <span class="lc" data-l="en">Baths</span>
+      <span class="lc" data-l="es">Baños</span>
+    </div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">1905</div>
+    <div class="stat-lbl">
+      <span class="lc on" data-l="de">Baujahr</span>
+      <span class="lc" data-l="en">Built</span>
+      <span class="lc" data-l="es">Año</span>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY
+  ════════════════════════════════════════
+  Bilder in images/ Ordner:
+  01-wohnzimmer-hauptansicht.jpeg  → Hero-Hintergrund
+  02-wohnzimmer-sofa.jpeg          → Galerie Hauptbild (groß)
+  03-wohnzimmer-panorama.jpeg      → Galerie 2er-Reihe links
+  04-esszimmer.jpeg                → Galerie 2er-Reihe rechts
+  05-schlafzimmer-1-balkon.jpeg    → Galerie 2er-Reihe links
+  06-schlafzimmer-2.jpeg           → Galerie 2er-Reihe rechts
+  07-schlafzimmer-3-ankleidezimmer.jpeg → Thumbnail
+  08-schlafzimmer-4.jpeg           → Thumbnail
+  09-schlafzimmer-3-detail.jpeg    → Thumbnail
+  10-ankleidezimmer.jpeg           → Thumbnail
+  ════════════════════════════════════════
+-->
+<div class="gallery">
+  <div class="gallery-stag">
+    <span class="lc on" data-l="de">Impressionen</span>
+    <span class="lc" data-l="en">Gallery</span>
+    <span class="lc" data-l="es">Galería</span>
+  </div>
+  <img class="gallery-main" src="01-wohnzimmer-sofa.jpeg" alt="Wohnzimmer" loading="lazy">
+  <div class="gallery-grid">
+    <img src="02-wohnzimmer-weitwinkel.jpeg" alt="Wohnzimmer" loading="lazy">
+    <img src="03-esszimmer.jpeg" alt="Esszimmer" loading="lazy">
+  </div>
+  <div class="gallery-grid" style="margin-top:3px">
+    <img src="04-schlafzimmer.jpeg" alt="Schlafzimmer" loading="lazy">
+    <img src="05-schlafzimmer-ankleide.jpeg" alt="Schlafzimmer mit Ankleide" loading="lazy">
+  </div>
+  <div class="gallery-strip">
+    <img src="06-ankleidezimmer.jpeg" alt="Ankleidezimmer" loading="lazy">
+  </div>
+</div>
+
+<!-- DESCRIPTION -->
+<section>
+  <div class="lc on" data-l="de">
+    <div class="stag">Die Immobilie</div>
+    <h2 class="stitle">Historischer Charme.<br><em>Beste Lage.</em></h2>
+    <p class="dtxt">Diese außergewöhnliche Wohnung vereint historischen Charme mit einer der besten Lagen Mallorcas. In unmittelbarer Nähe des Paseo del Born, gegenüber der Kathedrale von Palma – ein einzigartiges Wohnerlebnis im Herzen der Stadt.</p>
+    <p class="dtxt">202 m² mit hohen Decken, originalen Details und authentischem mallorquinischem Stil aus dem Jahr 1905. Vollständig möbliert, Einbauküche, Klimaanlage, Aufzug und großzügiges Ankleidezimmer inklusive.</p>
+  </div>
+  <div class="lc" data-l="en">
+    <div class="stag">The Property</div>
+    <h2 class="stitle">Historic Charm.<br><em>Prime Location.</em></h2>
+    <p class="dtxt">This exceptional apartment combines historic charm with one of Mallorca's finest addresses. In the immediate vicinity of Paseo del Born, opposite the Cathedral of Palma — a unique living experience in the heart of the city.</p>
+    <p class="dtxt">202 m² with high ceilings, original details and authentic Mallorcan style from 1905. Fully furnished, fitted kitchen, air conditioning, elevator and generous walk-in closet included.</p>
+  </div>
+  <div class="lc" data-l="es">
+    <div class="stag">La Propiedad</div>
+    <h2 class="stitle">Encanto Histórico.<br><em>Ubicación Única.</em></h2>
+    <p class="dtxt">Este extraordinario apartamento combina el encanto histórico con una de las mejores direcciones de Mallorca. En las inmediaciones del Paseo del Born, frente a la Catedral de Palma — una experiencia de vida única en el corazón de la ciudad.</p>
+    <p class="dtxt">202 m² con techos altos, detalles originales y auténtico estilo mallorquín de 1905. Completamente amueblado, cocina equipada, aire acondicionado, ascensor y generoso vestidor incluidos.</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="stag">
+    <span class="lc on" data-l="de">Ausstattung</span>
+    <span class="lc" data-l="en">Features</span>
+    <span class="lc" data-l="es">Características</span>
+  </div>
+  <div class="feat-grid">
+    <div class="feat">
+      <div class="feat-val">202 m²</div>
+      <div class="feat-key"><span class="lc on" data-l="de">Wohnfläche</span><span class="lc" data-l="en">Living Area</span><span class="lc" data-l="es">Superficie</span></div>
+    </div>
+    <div class="feat">
+      <div class="feat-val">1. OG</div>
+      <div class="feat-key"><span class="lc on" data-l="de">Außenliegend</span><span class="lc" data-l="en">1st Floor</span><span class="lc" data-l="es">1ª Planta</span></div>
+    </div>
+    <div class="feat">
+      <div class="feat-val">Garage</div>
+      <div class="feat-key"><span class="lc on" data-l="de">Stellplatz inkl.</span><span class="lc" data-l="en">Parking incl.</span><span class="lc" data-l="es">Garaje incl.</span></div>
+    </div>
+    <div class="feat">
+      <div class="feat-val">700 €</div>
+      <div class="feat-key"><span class="lc on" data-l="de">Quartalskosten</span><span class="lc" data-l="en">Quarterly Fees</span><span class="lc" data-l="es">Gastos / Trim.</span></div>
+    </div>
+    <div class="feat">
+      <div class="feat-val">A/C + Lift</div>
+      <div class="feat-key"><span class="lc on" data-l="de">Klima & Aufzug</span><span class="lc" data-l="en">AC & Elevator</span><span class="lc" data-l="es">Clima & Ascensor</span></div>
+    </div>
+    <div class="feat">
+      <div class="feat-val">Walk-in</div>
+      <div class="feat-key"><span class="lc on" data-l="de">Ankleidezimmer</span><span class="lc" data-l="en">Walk-in Closet</span><span class="lc" data-l="es">Vestidor</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section>
+  <!-- DE -->
+  <div class="lc on" data-l="de">
+    <div class="stag">Lage</div>
+    <h2 class="stitle">Altstadt Palma,<br><em>Bestlage</em></h2>
+    <div class="loc-list">
+      <div class="loc-row">
+        <div class="loc-ico">⛪</div>
+        <div><div class="loc-h">Kathedrale La Seu</div><div class="loc-p">Direkt gegenüber – einzigartiger Blick auf das Wahrzeichen der Insel</div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-ico">🛍️</div>
+        <div><div class="loc-h">Paseo del Born</div><div class="loc-p">Einer der schönsten Boulevards Palmas – fußläufig in wenigen Minuten erreichbar</div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-ico">🏛️</div>
+        <div><div class="loc-h">Altstadt Palma</div><div class="loc-p">Alle kulturellen Highlights fußläufig erreichbar</div></div>
+      </div>
+    </div>
+  </div>
+  <!-- EN -->
+  <div class="lc" data-l="en">
+    <div class="stag">Location</div>
+    <h2 class="stitle">Old Town Palma,<br><em>Prime Location</em></h2>
+    <div class="loc-list">
+      <div class="loc-row">
+        <div class="loc-ico">⛪</div>
+        <div><div class="loc-h">La Seu Cathedral</div><div class="loc-p">Directly opposite — unique views of the island's most iconic landmark</div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-ico">🛍️</div>
+        <div><div class="loc-h">Paseo del Born</div><div class="loc-p">One of Palma's finest boulevards — just a few minutes walk away</div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-ico">🏛️</div>
+        <div><div class="loc-h">Old Town Palma</div><div class="loc-p">All cultural highlights within easy walking distance</div></div>
+      </div>
+    </div>
+  </div>
+  <!-- ES -->
+  <div class="lc" data-l="es">
+    <div class="stag">Ubicación</div>
+    <h2 class="stitle">Casco Antiguo,<br><em>Ubicación Única</em></h2>
+    <div class="loc-list">
+      <div class="loc-row">
+        <div class="loc-ico">⛪</div>
+        <div><div class="loc-h">Catedral La Seu</div><div class="loc-p">Directamente enfrente — vistas únicas al monumento más emblemático de la isla</div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-ico">🛍️</div>
+        <div><div class="loc-h">Paseo del Born</div><div class="loc-p">Uno de los bulevares más distinguidos de Palma — a pocos minutos a pie</div></div>
+      </div>
+      <div class="loc-row">
+        <div class="loc-ico">🏛️</div>
+        <div><div class="loc-h">Casco Antiguo</div><div class="loc-p">Todos los atractivos culturales a poca distancia a pie</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="lc on" data-l="de">
+    <div class="stag">Kontakt</div>
+    <h2 class="stitle">Besichtigung<br><em>anfragen</em></h2>
+    <p class="cnote">Nur ernsthafte Kaufinteressenten. Direktverkauf vom Eigentümer — ohne Maklergebühren.</p>
+  </div>
+  <div class="lc" data-l="en">
+    <div class="stag">Contact</div>
+    <h2 class="stitle">Request a<br><em>Viewing</em></h2>
+    <p class="cnote">Serious buyers only. Direct sale from owner — no agent fees.</p>
+  </div>
+  <div class="lc" data-l="es">
+    <div class="stag">Contacto</div>
+    <h2 class="stitle">Solicitar<br><em>Visita</em></h2>
+    <p class="cnote">Solo compradores serios. Venta directa del propietario — sin comisión de agencia.</p>
+  </div>
+
+  <div id="form">
+    <div class="frow">
+      <label class="flbl" id="ln">Name *</label>
+      <input class="finput" id="fn" type="text" placeholder="Max Mustermann" autocomplete="name">
+    </div>
+    <div class="frow">
+      <label class="flbl" id="lp">Telefon *</label>
+      <input class="finput" id="fp" type="tel" placeholder="+49 123 456 789" autocomplete="tel">
+    </div>
+    <div class="frow">
+      <label class="flbl" id="le">E-Mail</label>
+      <input class="finput" id="fe" type="email" placeholder="name@email.com" autocomplete="email">
+    </div>
+    <div class="frow">
+      <label class="flbl" id="lm">Nachricht</label>
+      <textarea class="ftarea" id="fm" placeholder="Ihre Fragen..."></textarea>
+    </div>
+    <button class="sbtn" id="sb" onclick="send()">Besichtigung anfragen</button>
+    <div class="dcontact">
+      <div class="dlbl" id="ld">Direktkontakt</div>
+      <a href="tel:+491775388150">+49 1775 388 150</a>
+      <div style="margin-top:0.75rem">
+        <a href="mailto:biwa@biwa-mallorca.com" style="font-family:'Inter',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.5);text-decoration:none;">biwa@biwa-mallorca.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="smsg" id="sm">
+    <h3>Vielen Dank.</h3>
+    <p id="sp">Wir melden uns innerhalb von 24 Stunden.</p>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Privatverkauf</span>
+  <span>Altstadt · Palma de Mallorca</span>
+</footer>
+
+<script>
+let lang = 'de';
+const tr = {
+  de: { n:'Name *', p:'Telefon *', e:'E-Mail', m:'Nachricht', b:'Besichtigung anfragen', d:'Direktkontakt', mp:'Ihre Fragen...', s:'Wir melden uns innerhalb von 24 Stunden.', a:'Bitte Name und Telefon angeben.' },
+  en: { n:'Name *', p:'Phone *', e:'Email', m:'Message', b:'Request Viewing', d:'Direct Contact', mp:'Your questions...', s:"We'll get back to you within 24 hours.", a:'Please enter name and phone.' },
+  es: { n:'Nombre *', p:'Teléfono *', e:'Correo', m:'Mensaje', b:'Solicitar Visita', d:'Contacto Directo', mp:'Sus preguntas...', s:'Le responderemos en 24 horas.', a:'Por favor ingrese nombre y teléfono.' }
+};
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');
+  document.querySelectorAll('.lc').forEach(el => el.classList.toggle('on', el.dataset.l === l));
+  const t = tr[l];
+  document.getElementById('ln').textContent = t.n;
+  document.getElementById('lp').textContent = t.p;
+  document.getElementById('le').textContent = t.e;
+  document.getElementById('lm').textContent = t.m;
+  document.getElementById('sb').textContent = t.b;
+  document.getElementById('ld').textContent = t.d;
+  document.getElementById('fm').placeholder = t.mp;
+}
+function send() {
+  const n = document.getElementById('fn').value.trim();
+  const p = document.getElementById('fp').value.trim();
+  if (!n || !p) { alert(tr[lang].a); return; }
+  document.getElementById('form').style.display = 'none';
+  document.getElementById('sm').style.display = 'block';
+  document.getElementById('sp').textContent = tr[lang].s;
+}
+</script>
+</body>
+</html>
