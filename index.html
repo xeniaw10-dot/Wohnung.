@@ -1,5 +1,4 @@
-PALMA
-PASSEIG <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -505,18 +504,24 @@ footer {
     <span class="lc" data-l="es">Impresiones</span>
   </h2>
 
-  <!-- Ausblick groß links, 2 Wohnzimmer rechts gestapelt -->
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:1.5rem;">
-    <img src="00-ausblick-kathedrale.jpeg" alt="Ausblick Kathedrale" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%; grid-row:span 2;">
-    <img src="01-wohnzimmer-sofa.jpeg" alt="Wohnzimmer" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
-    <img src="02-wohnzimmer-weitwinkel.jpeg" alt="Wohnzimmer Weitwinkel" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
+  <!-- Ausblick groß oben -->
+  <div style="margin-top:1.5rem;">
+    <img src="00-ausblick-kathedrale.jpeg" alt="Ausblick Kathedrale" loading="lazy" style="width:100%; aspect-ratio:4/3; object-fit:cover;">
   </div>
-  <!-- 4 Bilder gleichmäßig 2x2 -->
+  <!-- Wohnzimmer 2er Reihe quer -->
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:4px;">
-    <img src="03-esszimmer.jpeg" alt="Esszimmer" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
-    <img src="04-schlafzimmer.jpeg" alt="Schlafzimmer" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
-    <img src="05-schlafzimmer-ankleide.jpeg" alt="Schlafzimmer Ankleide" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
-    <img src="06-ankleidezimmer.jpeg" alt="Ankleidezimmer" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
+    <img src="01-wohnzimmer-sofa.jpeg" alt="Wohnzimmer" loading="lazy" style="aspect-ratio:4/3; object-fit:cover; width:100%;">
+    <img src="02-wohnzimmer-weitwinkel.jpeg" alt="Wohnzimmer" loading="lazy" style="aspect-ratio:4/3; object-fit:cover; width:100%;">
+  </div>
+  <!-- Esszimmer + Schlafzimmer quer -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:4px;">
+    <img src="03-esszimmer.jpeg" alt="Esszimmer" loading="lazy" style="aspect-ratio:4/3; object-fit:cover; width:100%;">
+    <img src="04-schlafzimmer.jpeg" alt="Schlafzimmer" loading="lazy" style="aspect-ratio:4/3; object-fit:cover; width:100%;">
+  </div>
+  <!-- Schlafzimmer Ankleide quer + Ankleidezimmer hochkant -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:4px; align-items:stretch;">
+    <img src="05-schlafzimmer-ankleide.jpeg" alt="Schlafzimmer Ankleide" loading="lazy" style="aspect-ratio:4/3; object-fit:cover; width:100%;">
+    <img src="06-ankleidezimmer.jpeg" alt="Ankleidezimmer" loading="lazy" style="aspect-ratio:2/3; object-fit:cover; width:100%;">
   </div>
 </section>
 
