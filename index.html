@@ -504,17 +504,21 @@ footer {
     <span class="lc" data-l="es">Impresiones</span>
   </h2>
 
-  <!-- Wohnzimmer 2er Reihe natürliches Hochformat -->
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:1.5rem;">
+  <!-- Ausblick groß oben volle Breite -->
+  <div style="margin-top:1.5rem;">
+    <img src="00-ausblick-kathedrale.jpeg" alt="Ausblick auf die Kathedrale" loading="lazy" style="width:100%; display:block;">
+  </div>
+  <!-- Wohnzimmer 2er Reihe -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:4px;">
     <img src="01-wohnzimmer-sofa.jpeg" alt="Wohnzimmer" loading="lazy" style="width:100%; display:block;">
     <img src="02-wohnzimmer-weitwinkel.jpeg" alt="Wohnzimmer" loading="lazy" style="width:100%; display:block;">
   </div>
-  <!-- Esszimmer + Schlafzimmer 2er Reihe -->
+  <!-- Esszimmer + Schlafzimmer -->
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:4px;">
     <img src="03-esszimmer.jpeg" alt="Esszimmer" loading="lazy" style="width:100%; display:block;">
     <img src="04-schlafzimmer.jpeg" alt="Schlafzimmer" loading="lazy" style="width:100%; display:block;">
   </div>
-  <!-- Schlafzimmer Ankleide + Ankleidezimmer nebeneinander -->
+  <!-- Schlafzimmer Ankleide + Ankleidezimmer -->
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:4px;">
     <img src="05-schlafzimmer-ankleide.jpeg" alt="Schlafzimmer Ankleide" loading="lazy" style="width:100%; display:block;">
     <img src="06-ankleidezimmer.jpeg" alt="Ankleidezimmer" loading="lazy" style="width:100%; display:block;">
@@ -592,14 +596,14 @@ footer {
 
     <div id="form">
       <div class="form-row-2">
-        <div><input class="finput" id="fn" type="text" placeholder="Name *" autocomplete="name"></div>
-        <div><input class="finput" id="fe" type="email" placeholder="E-Mail" autocomplete="email"></div>
+        <div><input class="finput" id="fn" name="name" type="text" placeholder="Name *" autocomplete="name"></div>
+        <div><input class="finput" id="fe" name="email" type="email" placeholder="E-Mail" autocomplete="email"></div>
       </div>
       <div class="form-row">
-        <input class="finput" id="fp" type="tel" placeholder="Telefon *" autocomplete="tel">
+        <input class="finput" id="fp" name="telefon" type="tel" placeholder="Telefon *" autocomplete="tel">
       </div>
       <div class="form-row">
-        <textarea class="ftarea" id="fm" placeholder="Ihre Nachricht..."></textarea>
+        <textarea class="ftarea" id="fm" name="nachricht" placeholder="Ihre Nachricht..."></textarea>
       </div>
       <button class="submit-btn" id="sb" onclick="send()">
         <span class="li on" data-l="de">Anfrage senden</span>
@@ -624,8 +628,8 @@ footer {
       <a href="mailto:biwa@biwa-mallorca.com">✉ biwa@biwa-mallorca.com</a>
     </div>
     <div class="footer-links">
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
+      <a href="https://www.biwa-mallorca.com/de/impressum" target="_blank">Impressum</a>
+      <a href="https://www.biwa-mallorca.com/de/datenschutz" target="_blank">Datenschutz</a>
     </div>
   </div>
   <p class="footer-copy">© 2025 · Privatverkauf ohne Maklergebühren · Palma de Mallorca</p>
@@ -658,14 +662,38 @@ function setLang(l) {
   document.getElementById('privacy-note').textContent = privacyNotes[l];
 }
 
-function send() {
+async function send() {
   const n = document.getElementById('fn').value.trim();
   const p = document.getElementById('fp').value.trim();
   if (!n || !p) { alert(alerts[lang]); return; }
-  document.getElementById('form').style.display = 'none';
-  const s = document.getElementById('sm');
-  s.style.display = 'block';
-  s.querySelector('p').textContent = successTexts[lang];
+  
+  document.getElementById('sb').textContent = '...';
+  
+  try {
+    const response = await fetch('https://formspree.io/f/xgoqveey', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: n,
+        telefon: p,
+        email: document.getElementById('fe').value,
+        nachricht: document.getElementById('fm').value
+      })
+    });
+    
+    if (response.ok) {
+      document.getElementById('form').style.display = 'none';
+      const s = document.getElementById('sm');
+      s.style.display = 'block';
+      s.querySelector('p').textContent = successTexts[lang];
+    } else {
+      alert('Fehler beim Senden. Bitte versuchen Sie es erneut.');
+      document.getElementById('sb').textContent = 'Anfrage senden';
+    }
+  } catch(e) {
+    alert('Fehler beim Senden. Bitte versuchen Sie es erneut.');
+    document.getElementById('sb').textContent = 'Anfrage senden';
+  }
 }
 
 // Smooth scroll for anchor links
