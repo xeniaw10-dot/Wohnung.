@@ -1,80 +1,680 @@
 PALMA
-PASSEIG DEL BORN
-HIGHLIGHTS
-GALERIE
-LAGE
-KONTAKT
-DE
-EN
-ES
-ANFRAGE
+PASSEIG <!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0A">
+<title>Palma Luxury Living — Passeig del Born</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --black: #0D0D0D;
+  --white: #FFFFFF;
+  --cream: #F8F6F1;
+  --gray: #6B6B6B;
+  --gold: #B8975A;
+  --gold-light: #D4B483;
+  --border: #E5E0D8;
+  --text: #2C2C2C;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; width: 100%; }
+a { text-decoration: none; color: inherit; }
 
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  padding: 1rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(13,13,13,0.5);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  transition: background 0.3s;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 400; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--white);
+}
+.nav-brand span { display: block; font-size: 0.55rem; letter-spacing: 0.25em; color: var(--gold); margin-top: 2px; }
+.nav-links { display: none; }
+.nav-links a {
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+  margin-left: 1.5rem; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--white);
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 0.5rem 1rem;
+  display: none;
+  transition: all 0.2s;
+}
+.nav-cta:hover { background: var(--gold); border-color: var(--gold); }
+.lang-switch { display: flex; }
+.lang-btn {
+  background: none; border: none; font-family: 'Inter', sans-serif;
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.45);
+  padding: 0.4rem 0.4rem; cursor: pointer; transition: color 0.2s;
+  min-height: 44px; min-width: 36px;
+}
+.lang-btn.active { color: var(--white); }
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+  .nav-cta { display: block; }
+}
 
-EXKLUSIVE WOHNUNG · PASSEIG DEL BORN
-Luxuswohnung im
-Herzen von Palma
-Historischer Charme, Toplage und direkter Blick auf die Kathedrale La Seu.
-BESICHTIGUNG ANFRAGEN
-GALERIE ANSEHEN →
-202
-M²
-4
-SCHLAFZIMMER
-4+1
-BÄDER/WC
-1905
-BAUJAHR
-DIE HIGHLIGHTS
-Designed für Exzellenz
-Diese außergewöhnliche Wohnung vereint historischen Charme, elegantes Design und eine der begehrtesten Lagen Palmas – direkt am Passeig del Born.
-MEHR ERFAHREN
-⛪
-Blick auf die Kathedrale
-Direkter Ausblick auf La Seu – das ikonischste Wahrzeichen Mallorcas.
-🛍️
-Passeig del Born
-Louis Vuitton, Top-Restaurants & Luxusboutiquen direkt vor der Tür.
-🏛️
-Historischer Altbau
-Baujahr 1905 – hohe Decken, originale Details, authentischer Charakter.
-🚗
-Garage inklusive
-Eigener Stellplatz – ein seltenes Privileg in dieser Toplage.
-🛁
-4 Bäder + Gäste-WC
-Großzügig ausgestattet für höchste Ansprüche.
-✓
-Bezugsfertig & möbliert
-Vollständig möbliert, Einbauküche, Klimaanlage & Aufzug.
-GALERIE
-Impressionen
+/* ── HERO ── */
+.hero {
+  height: 100svh; min-height: 600px;
+  position: relative; overflow: hidden; background: var(--black);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('00-ausblick-kathedrale.jpeg') center/cover no-repeat;
+  opacity: 0.65; transform: scale(1.05);
+  animation: zoomOut 16s ease forwards;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.75) 100%);
+}
+@keyframes zoomOut { to { transform: scale(1); } }
+.hero-content {
+  position: relative; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 2.5rem 1.5rem;
+  padding-bottom: max(2.5rem, env(safe-area-inset-bottom, 2.5rem));
+}
+.hero-eyebrow {
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp 0.9s 0.3s forwards;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 10vw, 5rem);
+  font-weight: 300; color: var(--white); line-height: 1.05;
+  margin-bottom: 1rem;
+  opacity: 0; animation: fadeUp 0.9s 0.5s forwards;
+}
+.hero-sub {
+  font-size: 0.85rem; font-weight: 300; color: rgba(255,255,255,0.7);
+  line-height: 1.6; max-width: 400px; margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.9s 0.7s forwards;
+}
+.hero-btns {
+  display: flex; gap: 0.75rem; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.9s 0.9s forwards;
+}
+.btn-primary {
+  background: var(--gold); color: var(--black);
+  font-family: 'Inter', sans-serif; font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.9rem 1.5rem; border: none; cursor: pointer;
+  transition: background 0.2s; white-space: nowrap;
+}
+.btn-primary:hover { background: var(--gold-light); }
+.btn-secondary {
+  background: transparent; color: var(--white);
+  font-family: 'Inter', sans-serif; font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 0.9rem 1.5rem; border: 1px solid rgba(255,255,255,0.5);
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.btn-secondary:hover { border-color: var(--white); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-DIE LAGE
-Passeig del Born, Palma de Mallorca
-Wohnen im Herzen von Palma – umgeben von Kultur, Luxus und dem unvergleichlichen mediterranen Lebensgefühl.
-✓
-Kathedrale La Seu – direkter Ausblick
-✓
-Louis Vuitton & Luxusboutiquen – 1 Min. zu Fuß
-✓
-Top-Restaurants & Cafés – direkt vor der Tür
-✓
-Altstadt – 5 Min. zu Fuß
-✓
-Flughafen – 15 Min. mit dem Auto
-PRIVATE ANFRAGE
-Interesse an dieser exklusiven Immobilie?
-Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden. Nur ernsthafte Kaufinteressenten.
-📞
-DIREKT ANRUFEN: +49 1775 388 150
+/* ── HIGHLIGHTS ── */
+.highlights {
+  background: var(--cream);
+  padding: 4rem 1.5rem;
+}
+.highlights-top {
+  margin-bottom: 2.5rem;
+}
+.section-eyebrow {
+  font-size: 0.58rem; font-weight: 600; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  font-weight: 300; line-height: 1.15; color: var(--black);
+  margin-bottom: 1rem;
+}
+.section-desc {
+  font-size: 0.85rem; font-weight: 300; color: var(--gray);
+  line-height: 1.75; max-width: 340px; margin-bottom: 1.5rem;
+}
+.btn-outline {
+  display: inline-block;
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--black);
+  border: 1px solid var(--black); padding: 0.7rem 1.25rem;
+  transition: all 0.2s;
+}
+.btn-outline:hover { background: var(--black); color: var(--white); }
+.highlights-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.highlight-item { display: flex; gap: 0.75rem; align-items: flex-start; }
+.hi-icon {
+  width: 32px; height: 32px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 1rem; margin-top: 2px;
+}
+.hi-title {
+  font-size: 0.78rem; font-weight: 600; color: var(--black);
+  margin-bottom: 0.3rem; letter-spacing: 0.02em;
+}
+.hi-desc {
+  font-size: 0.72rem; font-weight: 300; color: var(--gray); line-height: 1.5;
+}
 
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--black);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.stat {
+  padding: 1.5rem 0.75rem; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.stat:last-child { border-right: none; }
+.stat-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 300; color: var(--white); line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.stat-lbl {
+  font-size: 0.5rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: #666;
+}
 
+/* ── GALLERY ── */
+.gallery-section { padding: 4rem 1.5rem; background: var(--white); }
+.gallery-tabs {
+  display: flex; gap: 0; flex-wrap: wrap;
+  margin-top: 1.5rem; margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.tab-btn {
+  background: none; border: none; border-bottom: 2px solid transparent;
+  font-family: 'Inter', sans-serif; font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray);
+  padding: 0.6rem 0.9rem; cursor: pointer; transition: all 0.2s;
+  margin-bottom: -1px;
+}
+.tab-btn.active { color: var(--black); border-bottom-color: var(--gold); }
+.gallery-grid-main {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+}
+.gallery-grid-main img {
+  aspect-ratio: 4/3; object-fit: contain;
+}
+.gallery-grid-main img.tall {
+  aspect-ratio: 2/3; grid-row: span 2;
+}
+.gallery-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 4px;
+}
+.gallery-strip img { aspect-ratio: 4/3; object-fit: contain; }
 
+/* ── LOCATION ── */
+.location-section { padding: 4rem 1.5rem; background: var(--cream); }
+.loc-features { margin-top: 1.5rem; }
+.loc-feature {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+  font-size: 0.8rem; color: var(--text);
+}
+.loc-feature:first-child { border-top: 1px solid var(--border); }
+.loc-check { color: var(--gold); font-size: 0.9rem; flex-shrink: 0; }
 
-ANFRAGE SENDEN 🔒
-Ihre Daten werden vertraulich behandelt und nicht weitergegeben.
-Palma · Passeig del Born
-📞 +49 1775 388 150 ✉ biwa@biwa-mallorca.com
-IMPRESSUM
-DATENSCHUTZ
-© 2025 · Privatverkauf ohne Maklergebühren · Palma de Mallorca
+/* ── CONTACT ── */
+.contact-section { background: var(--black); padding: 4rem 1.5rem; }
+.contact-inner { max-width: 600px; }
+.contact-eyebrow { color: var(--gold); }
+.contact-section .section-title { color: var(--white); }
+.contact-section .section-desc { color: rgba(255,255,255,0.45); }
+.whatsapp-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: #25D366; color: var(--white);
+  font-family: 'Inter', sans-serif; font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.85rem 1.25rem; border: none; cursor: pointer;
+  margin-top: 1rem; margin-bottom: 2rem;
+}
+.form-row { margin-bottom: 0.85rem; }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem; }
+.finput, .ftarea, .fselect {
+  width: 100%; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white); font-family: 'Inter', sans-serif;
+  font-size: 1rem; font-weight: 300;
+  padding: 0.8rem 1rem; outline: none;
+  transition: border-color 0.2s; -webkit-appearance: none;
+  border-radius: 0;
+}
+.finput:focus, .ftarea:focus, .fselect:focus { border-color: var(--gold); }
+.finput::placeholder, .ftarea::placeholder { color: rgba(255,255,255,0.25); }
+.fselect { color: rgba(255,255,255,0.5); }
+.fselect option { background: #1a1a1a; }
+.ftarea { height: 100px; resize: none; }
+.submit-btn {
+  width: 100%; background: var(--gold); border: none;
+  color: var(--black); font-family: 'Inter', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; padding: 1rem; cursor: pointer;
+  transition: opacity 0.2s; margin-top: 0.5rem;
+}
+.submit-btn:hover { opacity: 0.85; }
+.form-note {
+  font-size: 0.6rem; color: rgba(255,255,255,0.25);
+  text-align: center; margin-top: 0.75rem; line-height: 1.6;
+  display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+}
+.success-msg {
+  display: none; text-align: center; padding: 2.5rem 1rem;
+}
+.success-msg h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; color: var(--white); margin-bottom: 0.5rem;
+}
+.success-msg p { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+/* ── FOOTER ── */
+footer {
+  background: #050505;
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-inner {
+  display: flex; flex-wrap: wrap; gap: 1rem;
+  justify-content: space-between; align-items: center;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; color: var(--white); letter-spacing: 0.1em;
+}
+.footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+.footer-contact {
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+}
+.footer-contact a {
+  font-size: 0.62rem; color: rgba(255,255,255,0.4);
+  display: flex; align-items: center; gap: 0.35rem;
+}
+.footer-copy {
+  font-size: 0.55rem; color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em; text-align: center; margin-top: 1rem;
+}
+
+/* LANG */
+.lc { display: none; }
+.lc.on { display: block; }
+.li { display: none; }
+.li.on { display: inline; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    Palma
+    <span>Passeig del Born</span>
+  </div>
+  <div class="nav-links">
+    <a href="#highlights"><span class="li on" data-l="de">Highlights</span><span class="li" data-l="en">Highlights</span><span class="li" data-l="es">Destacados</span></a>
+    <a href="#gallery"><span class="li on" data-l="de">Galerie</span><span class="li" data-l="en">Gallery</span><span class="li" data-l="es">Galería</span></a>
+    <a href="#location"><span class="li on" data-l="de">Lage</span><span class="li" data-l="en">Location</span><span class="li" data-l="es">Ubicación</span></a>
+    <a href="#contact"><span class="li on" data-l="de">Kontakt</span><span class="li" data-l="en">Contact</span><span class="li" data-l="es">Contacto</span></a>
+  </div>
+  <div style="display:flex;align-items:center;gap:0.5rem">
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+    <a href="#contact" class="nav-cta">
+      <span class="li on" data-l="de">Anfrage</span>
+      <span class="li" data-l="en">Inquiry</span>
+      <span class="li" data-l="es">Consulta</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO — Bild: 00-ausblick-kathedrale.jpeg -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">
+      <span class="li on" data-l="de">Exklusive Wohnung · Passeig del Born</span>
+      <span class="li" data-l="en">Exclusive Apartment · Passeig del Born</span>
+      <span class="li" data-l="es">Apartamento Exclusivo · Passeig del Born</span>
+    </p>
+    <h1 class="hero-title">
+      <span class="lc on" data-l="de">Luxuswohnung im<br>Herzen von Palma</span>
+      <span class="lc" data-l="en">Luxury Apartment in<br>the Heart of Palma</span>
+      <span class="lc" data-l="es">Apartamento de Lujo<br>en el Corazón de Palma</span>
+    </h1>
+    <p class="hero-sub">
+      <span class="li on" data-l="de">Historischer Charme, Toplage und direkter Blick auf die Kathedrale La Seu.</span>
+      <span class="li" data-l="en">Historic charm, prime location and a direct view of La Seu Cathedral.</span>
+      <span class="li" data-l="es">Encanto histórico, ubicación privilegiada y vista directa a la Catedral La Seu.</span>
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">
+        <span class="li on" data-l="de">Besichtigung anfragen</span>
+        <span class="li" data-l="en">Request Private Viewing</span>
+        <span class="li" data-l="es">Solicitar Visita Privada</span>
+      </a>
+      <a href="#gallery" class="btn-secondary">
+        <span class="li on" data-l="de">Galerie ansehen →</span>
+        <span class="li" data-l="en">View Gallery →</span>
+        <span class="li" data-l="es">Ver Galería →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-val">202</div>
+    <div class="stat-lbl">m²</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">4</div>
+    <div class="stat-lbl"><span class="li on" data-l="de">Schlafzimmer</span><span class="li" data-l="en">Bedrooms</span><span class="li" data-l="es">Dormitorios</span></div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">4+1</div>
+    <div class="stat-lbl"><span class="li on" data-l="de">Bäder/WC</span><span class="li" data-l="en">Baths/WC</span><span class="li" data-l="es">Baños/WC</span></div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">1905</div>
+    <div class="stat-lbl"><span class="li on" data-l="de">Baujahr</span><span class="li" data-l="en">Built</span><span class="li" data-l="es">Año</span></div>
+  </div>
+</div>
+
+<!-- HIGHLIGHTS -->
+<section class="highlights" id="highlights">
+  <div class="highlights-top">
+    <p class="section-eyebrow">
+      <span class="li on" data-l="de">Die Highlights</span>
+      <span class="li" data-l="en">The Highlights</span>
+      <span class="li" data-l="es">Los Destacados</span>
+    </p>
+    <!-- DE -->
+    <div class="lc on" data-l="de">
+      <h2 class="section-title">Designed für<br>Exzellenz</h2>
+      <p class="section-desc">Diese außergewöhnliche Wohnung vereint historischen Charme, elegantes Design und eine der begehrtesten Lagen Palmas – direkt am Passeig del Born.</p>
+    </div>
+    <!-- EN -->
+    <div class="lc" data-l="en">
+      <h2 class="section-title">Designed for<br>Excellence</h2>
+      <p class="section-desc">This exceptional apartment combines historic charm, elegant design and one of Palma's most sought-after locations — directly on Passeig del Born.</p>
+    </div>
+    <!-- ES -->
+    <div class="lc" data-l="es">
+      <h2 class="section-title">Diseñado para<br>la Excelencia</h2>
+      <p class="section-desc">Este excepcional apartamento combina encanto histórico, diseño elegante y una de las ubicaciones más codiciadas de Palma — directamente en el Passeig del Born.</p>
+    </div>
+    <a href="#contact" class="btn-outline">
+      <span class="li on" data-l="de">Mehr erfahren</span>
+      <span class="li" data-l="en">Discover More</span>
+      <span class="li" data-l="es">Descubrir Más</span>
+    </a>
+  </div>
+
+  <div class="highlights-grid">
+    <div class="highlight-item">
+      <div class="hi-icon">⛪</div>
+      <div>
+        <div class="hi-title"><span class="li on" data-l="de">Blick auf die Kathedrale</span><span class="li" data-l="en">Cathedral View</span><span class="li" data-l="es">Vista a la Catedral</span></div>
+        <div class="hi-desc"><span class="li on" data-l="de">Direkter Ausblick auf La Seu – das ikonischste Wahrzeichen Mallorcas.</span><span class="li" data-l="en">Direct view of La Seu — Mallorca's most iconic landmark.</span><span class="li" data-l="es">Vista directa a La Seu — el monumento más icónico de Mallorca.</span></div>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-icon">🛍️</div>
+      <div>
+        <div class="hi-title"><span class="li on" data-l="de">Passeig del Born</span><span class="li" data-l="en">Passeig del Born</span><span class="li" data-l="es">Passeig del Born</span></div>
+        <div class="hi-desc"><span class="li on" data-l="de">Louis Vuitton, Top-Restaurants & Luxusboutiquen direkt vor der Tür.</span><span class="li" data-l="en">Louis Vuitton, top restaurants & luxury boutiques at your doorstep.</span><span class="li" data-l="es">Louis Vuitton, restaurantes top y boutiques de lujo en la puerta.</span></div>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-icon">🏛️</div>
+      <div>
+        <div class="hi-title"><span class="li on" data-l="de">Historischer Altbau</span><span class="li" data-l="en">Historic Building</span><span class="li" data-l="es">Edificio Histórico</span></div>
+        <div class="hi-desc"><span class="li on" data-l="de">Baujahr 1905 – hohe Decken, originale Details, authentischer Charakter.</span><span class="li" data-l="en">Built 1905 — high ceilings, original details, authentic character.</span><span class="li" data-l="es">Construido en 1905 — techos altos, detalles originales, carácter auténtico.</span></div>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-icon">🚗</div>
+      <div>
+        <div class="hi-title"><span class="li on" data-l="de">Garage inklusive</span><span class="li" data-l="en">Garage Included</span><span class="li" data-l="es">Garaje Incluido</span></div>
+        <div class="hi-desc"><span class="li on" data-l="de">Eigener Stellplatz – ein seltenes Privileg in dieser Toplage.</span><span class="li" data-l="en">Private parking — a rare privilege at this prime location.</span><span class="li" data-l="es">Aparcamiento privado — un privilegio excepcional en esta ubicación.</span></div>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-icon">🛁</div>
+      <div>
+        <div class="hi-title"><span class="li on" data-l="de">4 Bäder + Gäste-WC</span><span class="li" data-l="en">4 Bathrooms + Guest WC</span><span class="li" data-l="es">4 Baños + Aseo</span></div>
+        <div class="hi-desc"><span class="li on" data-l="de">Großzügig ausgestattet für höchste Ansprüche.</span><span class="li" data-l="en">Generously equipped for the highest standards.</span><span class="li" data-l="es">Generosamente equipado para los más altos estándares.</span></div>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <div class="hi-icon">✓</div>
+      <div>
+        <div class="hi-title"><span class="li on" data-l="de">Bezugsfertig & möbliert</span><span class="li" data-l="en">Move-in Ready</span><span class="li" data-l="es">Listo para Entrar</span></div>
+        <div class="hi-desc"><span class="li on" data-l="de">Vollständig möbliert, Einbauküche, Klimaanlage & Aufzug.</span><span class="li" data-l="en">Fully furnished, fitted kitchen, air conditioning & elevator.</span><span class="li" data-l="es">Completamente amueblado, cocina equipada, A/C y ascensor.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <p class="section-eyebrow">
+    <span class="li on" data-l="de">Galerie</span>
+    <span class="li" data-l="en">Gallery</span>
+    <span class="li" data-l="es">Galería</span>
+  </p>
+  <h2 class="section-title">
+    <span class="lc on" data-l="de">Impressionen</span>
+    <span class="lc" data-l="en">Impressions</span>
+    <span class="lc" data-l="es">Impresiones</span>
+  </h2>
+
+  <!-- Ausblick groß links, 2 Wohnzimmer rechts gestapelt -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:1.5rem;">
+    <img src="00-ausblick-kathedrale.jpeg" alt="Ausblick Kathedrale" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%; grid-row:span 2;">
+    <img src="01-wohnzimmer-sofa.jpeg" alt="Wohnzimmer" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
+    <img src="02-wohnzimmer-weitwinkel.jpeg" alt="Wohnzimmer Weitwinkel" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
+  </div>
+  <!-- 4 Bilder gleichmäßig 2x2 -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:4px;">
+    <img src="03-esszimmer.jpeg" alt="Esszimmer" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
+    <img src="04-schlafzimmer.jpeg" alt="Schlafzimmer" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
+    <img src="05-schlafzimmer-ankleide.jpeg" alt="Schlafzimmer Ankleide" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
+    <img src="06-ankleidezimmer.jpeg" alt="Ankleidezimmer" loading="lazy" style="aspect-ratio:3/4; object-fit:cover; width:100%;">
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section" id="location">
+  <!-- DE -->
+  <div class="lc on" data-l="de">
+    <p class="section-eyebrow">Die Lage</p>
+    <h2 class="section-title">Passeig del Born,<br>Palma de Mallorca</h2>
+    <p class="section-desc">Wohnen im Herzen von Palma – umgeben von Kultur, Luxus und dem unvergleichlichen mediterranen Lebensgefühl.</p>
+    <div class="loc-features">
+      <div class="loc-feature"><span class="loc-check">✓</span> Kathedrale La Seu – direkter Ausblick</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Louis Vuitton & Luxusboutiquen – 1 Min. zu Fuß</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Top-Restaurants & Cafés – direkt vor der Tür</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Altstadt – 5 Min. zu Fuß</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Flughafen – 15 Min. mit dem Auto</div>
+    </div>
+  </div>
+  <!-- EN -->
+  <div class="lc" data-l="en">
+    <p class="section-eyebrow">The Location</p>
+    <h2 class="section-title">Passeig del Born,<br>Palma de Mallorca</h2>
+    <p class="section-desc">Living in the heart of Palma — surrounded by culture, luxury and the unparalleled Mediterranean lifestyle.</p>
+    <div class="loc-features">
+      <div class="loc-feature"><span class="loc-check">✓</span> La Seu Cathedral — direct view</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Louis Vuitton & luxury boutiques — 1 min walk</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Top restaurants & cafés — right at the door</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Old Town — 5 min walk</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Airport — 15 min by car</div>
+    </div>
+  </div>
+  <!-- ES -->
+  <div class="lc" data-l="es">
+    <p class="section-eyebrow">La Ubicación</p>
+    <h2 class="section-title">Passeig del Born,<br>Palma de Mallorca</h2>
+    <p class="section-desc">Vivir en el corazón de Palma — rodeado de cultura, lujo y el incomparable estilo de vida mediterráneo.</p>
+    <div class="loc-features">
+      <div class="loc-feature"><span class="loc-check">✓</span> Catedral La Seu — vista directa</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Louis Vuitton & boutiques de lujo — 1 min a pie</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Restaurantes top & cafés — justo en la puerta</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Casco antiguo — 5 min a pie</div>
+      <div class="loc-feature"><span class="loc-check">✓</span> Aeropuerto — 15 min en coche</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <!-- DE -->
+    <div class="lc on" data-l="de">
+      <p class="section-eyebrow contact-eyebrow">Private Anfrage</p>
+      <h2 class="section-title" style="color:white">Interesse an dieser<br>exklusiven Immobilie?</h2>
+      <p class="section-desc">Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden. Nur ernsthafte Kaufinteressenten.</p>
+    </div>
+    <div class="lc" data-l="en">
+      <p class="section-eyebrow contact-eyebrow">Private Inquiry</p>
+      <h2 class="section-title" style="color:white">Interested in this<br>exclusive property?</h2>
+      <p class="section-desc">Fill out the form and we'll get back to you within 24 hours. Serious buyers only.</p>
+    </div>
+    <div class="lc" data-l="es">
+      <p class="section-eyebrow contact-eyebrow">Consulta Privada</p>
+      <h2 class="section-title" style="color:white">¿Interesado en esta<br>propiedad exclusiva?</h2>
+      <p class="section-desc">Rellene el formulario y le responderemos en 24 horas. Solo compradores serios.</p>
+    </div>
+
+    <a href="tel:+491775388150" class="whatsapp-btn">
+      📞 <span class="li on" data-l="de">Direkt anrufen: +49 1775 388 150</span>
+      <span class="li" data-l="en">Call directly: +49 1775 388 150</span>
+      <span class="li" data-l="es">Llamar: +49 1775 388 150</span>
+    </a>
+
+    <div id="form">
+      <div class="form-row-2">
+        <div><input class="finput" id="fn" type="text" placeholder="Name *" autocomplete="name"></div>
+        <div><input class="finput" id="fe" type="email" placeholder="E-Mail" autocomplete="email"></div>
+      </div>
+      <div class="form-row">
+        <input class="finput" id="fp" type="tel" placeholder="Telefon *" autocomplete="tel">
+      </div>
+      <div class="form-row">
+        <textarea class="ftarea" id="fm" placeholder="Ihre Nachricht..."></textarea>
+      </div>
+      <button class="submit-btn" id="sb" onclick="send()">
+        <span class="li on" data-l="de">Anfrage senden</span>
+        <span class="li" data-l="en">Send Inquiry</span>
+        <span class="li" data-l="es">Enviar Consulta</span>
+      </button>
+      <p class="form-note">🔒 <span id="privacy-note">Ihre Daten werden vertraulich behandelt und nicht weitergegeben.</span></p>
+    </div>
+    <div class="success-msg" id="sm">
+      <h3>Vielen Dank.</h3>
+      <p id="sp">Wir melden uns innerhalb von 24 Stunden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Palma · Passeig del Born</div>
+    <div class="footer-contact">
+      <a href="tel:+491775388150">📞 +49 1775 388 150</a>
+      <a href="mailto:biwa@biwa-mallorca.com">✉ biwa@biwa-mallorca.com</a>
+    </div>
+    <div class="footer-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2025 · Privatverkauf ohne Maklergebühren · Palma de Mallorca</p>
+</footer>
+
+<script>
+let lang = 'de';
+const privacyNotes = {
+  de: 'Ihre Daten werden vertraulich behandelt und nicht weitergegeben.',
+  en: 'Your data will be treated confidentially and will not be shared.',
+  es: 'Sus datos serán tratados con confidencialidad y no serán compartidos.'
+};
+const successTexts = {
+  de: 'Wir melden uns innerhalb von 24 Stunden.',
+  en: "We'll get back to you within 24 hours.",
+  es: 'Le responderemos en 24 horas.'
+};
+const alerts = {
+  de: 'Bitte Name und Telefon angeben.',
+  en: 'Please enter name and phone.',
+  es: 'Por favor ingrese nombre y teléfono.'
+};
+
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');
+  document.querySelectorAll('.lc').forEach(el => el.classList.toggle('on', el.dataset.l === l));
+  document.querySelectorAll('.li').forEach(el => el.classList.toggle('on', el.dataset.l === l));
+  document.getElementById('privacy-note').textContent = privacyNotes[l];
+}
+
+function send() {
+  const n = document.getElementById('fn').value.trim();
+  const p = document.getElementById('fp').value.trim();
+  if (!n || !p) { alert(alerts[lang]); return; }
+  document.getElementById('form').style.display = 'none';
+  const s = document.getElementById('sm');
+  s.style.display = 'block';
+  s.querySelector('p').textContent = successTexts[lang];
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
